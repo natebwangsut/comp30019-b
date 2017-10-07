@@ -54,9 +54,15 @@ public class PlayerController : MonoBehaviour
 
 	void Rotate()
 	{
-		Vector3 moveRotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
-		moveRotation *= rotationSpeed;
-		transform.Rotate(moveRotation);
+//		Vector3 moveRotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
+//		moveRotation *= rotationSpeed;
+//		transform.Rotate(moveRotation);
+		
+		var mouse = Input.mousePosition;
+		var screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
+		var offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y);
+		var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.Euler(0, -angle, 0);
 	}
 
 }
