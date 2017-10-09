@@ -6,24 +6,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+	[Header("Player")]
+	public GunController gun;
 	public float movementSpeed;
-	public float rotationSpeed;
+	[HideInInspector] public float rotationSpeed;
 
 	private float gravity = 9.81f;
-
+	
 	private CharacterController _controller;
 	private Rigidbody _rigidbody;
-
-	public GunController gun;
 	
 	// Use this for initialization
 	void Start () {
 		_controller = GetComponent<CharacterController>();
 		_rigidbody = GetComponent<Rigidbody>();
-		
-		
-		movementSpeed = 5;
+
+		// Set movement speed if unset
+		if (movementSpeed <= 0) movementSpeed = 5;
 		rotationSpeed = movementSpeed * 10;
 		
 		// Initiate position
