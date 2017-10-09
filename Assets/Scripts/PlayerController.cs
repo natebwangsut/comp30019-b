@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
 	private CharacterController _controller;
 	private Rigidbody _rigidbody;
+
+	public GunController gun;
 	
 	// Use this for initialization
 	void Start () {
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
 	void Update () {
 		Move();
 		Rotate();
+		Fire();
 	}
 
 	void Move()
@@ -62,7 +65,15 @@ public class PlayerController : MonoBehaviour
 		var screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
 		var offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y);
 		var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler(0, -angle, 0);
+		transform.rotation = Quaternion.Euler(0, -angle + 90, 0);
+	}
+
+	void Fire()
+	{
+		if (Input.GetKeyDown(KeyCode.Space))
+			gun.isFiring = true;
+		if (Input.GetKeyUp(KeyCode.Space))
+			gun.isFiring = false;
 	}
 
 }
