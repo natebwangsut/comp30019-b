@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework.Internal.Commands;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
 	
 	private CharacterController _controller;
 	private Rigidbody _rigidbody;
+
+	private Vector3 moveDirection;
 	
 	// Use this for initialization
 	void Start () {
@@ -23,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
 		// Set movement speed if unset
 		if (movementSpeed <= 0) movementSpeed = 5;
-		rotationSpeed = movementSpeed * 10;
+		rotationSpeed = movementSpeed / 10;
 		
 		// Initiate position
 		transform.position = Vector3.up * 5;
@@ -39,7 +42,6 @@ public class PlayerController : MonoBehaviour
 
 	void Move()
 	{
-		Vector3 moveDirection = Vector3.zero;
 		moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		
 		if (_controller.isGrounded == false)
@@ -49,17 +51,12 @@ public class PlayerController : MonoBehaviour
 		}
 		
 		// Moving globally
-		//moveDirection = transform.TransformDirection(moveDirection); 
 		moveDirection *= movementSpeed;
 		_controller.Move(moveDirection * Time.deltaTime);
 	}
 
 	void Rotate()
 	{
-//		Vector3 moveRotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
-//		moveRotation *= rotationSpeed;
-//		transform.Rotate(moveRotation);
-		
 		var mouse = Input.mousePosition;
 		var screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
 		var offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y);
