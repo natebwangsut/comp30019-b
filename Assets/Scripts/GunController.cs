@@ -32,7 +32,10 @@ public class GunController : MonoBehaviour
 		}
 		else
 		{
-			shotCounter = 0;
+			// If shotCounter > 0, -= Time.deltaTime, else = 0
+			shotCounter = shotCounter > 0
+				? shotCounter - Time.deltaTime
+				: 0;
 		}
 	}
 }

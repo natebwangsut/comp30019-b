@@ -10,7 +10,8 @@ public class CameraFollow : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-		offset = (Vector3.up * 10);
+		if (offset == Vector3.zero)
+			offset = (Vector3.up * 15);
 	}
 	
 	// LateUpdate is called after Update each frame

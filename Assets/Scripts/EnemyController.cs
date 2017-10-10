@@ -13,6 +13,8 @@ public class EnemyController : MonoBehaviour
 	[Header("Automatically find player")]
 	public PlayerController player;
 
+	[Header("Enemy Gun")] public GunController gun;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -28,5 +30,11 @@ public class EnemyController : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 		transform.LookAt(player.transform);
+		Shoot();
+	}
+
+	void Shoot()
+	{
+		gun.isFiring = (Vector3.Distance(player.transform.position, this.transform.position) < 5);
 	}
 }
