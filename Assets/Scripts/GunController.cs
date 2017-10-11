@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
 	public bool isFiring;
-	public BulletController bullet;
+	public BulletController Bullet;
 
 	public float bulletSpeed;
 	public float cooldown;
@@ -26,8 +26,8 @@ public class GunController : MonoBehaviour
 			if (shotCounter <= 0)
 			{
 				shotCounter = cooldown;
-				BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-				newBullet.speed = bullet.speed;
+				BulletController newBullet = Instantiate(Bullet, firePoint.position, firePoint.rotation);
+				newBullet.Speed = Bullet.Speed;
 			}
 		}
 		else

@@ -19,11 +19,13 @@ public class EnemyHealth : MonoBehaviour
 		if (currentHealth <= 0)
 		{
 			Destroy(gameObject);
+			Debug.Log("Enemy health <= 0, removing enemy.");
 		}
 	}
 
-	public void damangeEnemy(int damage)
+	public void damageEnemy(int damage)
 	{
 		currentHealth -= damage;
+		Debug.Log("Enemy damaged, current health = ." + currentHealth);
 	}
 }

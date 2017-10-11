@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 33179125362753776}
   - component: {fileID: 135727908847572804}
   - component: {fileID: 23353111997085194}
-  - component: {fileID: 114352636242716382}
+  - component: {fileID: 114088446782664180}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -234,7 +234,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114352636242716382
+--- !u!114 &114088446782664180
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -242,12 +242,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1951877725999406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f347b53773f0c4321981e382d5e6beca, type: 3}
+  m_Script: {fileID: 11500000, guid: ca830dc5e1ed14be590262e73b936030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
   lifeTime: 2
   bulletDamage: 1
+  isDestoryable: 1
 --- !u!135 &135727908847572804
 SphereCollider:
   m_ObjectHideFlags: 1

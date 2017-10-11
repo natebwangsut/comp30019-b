@@ -22,8 +22,9 @@ public class PlayerHealth : MonoBehaviour {
 		}
 	}
 
-	public void damangeEnemy(int damage)
+	public void damagePlayer(int damage)
 	{
 		currentHealth -= damage;
+		Debug.Log("Player damaged, current health = " + currentHealth);
 	}
 }
