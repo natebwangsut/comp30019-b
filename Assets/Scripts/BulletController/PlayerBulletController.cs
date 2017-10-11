@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Abstract;
+using Interface;
 using UnityEngine;
+using UnityEngine.TestTools;
 
-public class EnemyBulletController : BulletController
+public class PlayerBulletController : BulletController
 {
-	public float speed;
-	public float lifeTime;
+	public float LifeTime;
 
-	public int bulletDamage;
+	public int BulletDamage;
 
-	public bool isDestoryable;
+	public bool Destoryable;
 	
 	// Use this for initialization
 	public override void Start ()
@@ -18,11 +20,11 @@ public class EnemyBulletController : BulletController
 	
 	// Update is called once per frame
 	public override void Update () {
-		transform.Translate(Vector3.forward * speed * Time.deltaTime);
-		lifeTime -= Time.deltaTime;
-		if(lifeTime <= 0) Destroy(gameObject);
+		transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+		LifeTime -= Time.deltaTime;
+		if(LifeTime <= 0) Destroy(gameObject);
 	}
-
+	
 	public override void OnCollisionEnter(Collision other)
 	{
 //		if (other.gameObject.CompareTag("Bullet"))
@@ -33,9 +35,10 @@ public class EnemyBulletController : BulletController
 //			}
 //		}
 
-		if (other.gameObject.CompareTag("Player"))
+		
+		if (other.gameObject.CompareTag("Enemy"))
 		{
-			other.gameObject.GetComponent<PlayerHealth>().damagePlayer(bulletDamage);
+			other.gameObject.GetComponent<IDamageable>().RecieveDamage(BulletDamage);
 			Destroy(gameObject);
 		}
 	}

@@ -8,12 +8,10 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
 	[Header("Player")]
-	public GunController gun;
-	public float movementSpeed;
-	[HideInInspector] public float rotationSpeed;
+	public GunController Gun;
+	public float MovementSpeed;
+	[HideInInspector] public float RotationSpeed;
 
-	private float gravity = 9.81f;
-	
 	private CharacterController _controller;
 	private Rigidbody _rigidbody;
 
@@ -25,8 +23,8 @@ public class PlayerController : MonoBehaviour
 		_rigidbody = GetComponent<Rigidbody>();
 
 		// Set movement speed if unset
-		if (movementSpeed <= 0) movementSpeed = 5;
-		rotationSpeed = movementSpeed / 10;
+		if (MovementSpeed <= 0) MovementSpeed = 5;
+		RotationSpeed = MovementSpeed / 10;
 		
 		// Initiate position
 		transform.position = Vector3.up * 5;
@@ -51,7 +49,7 @@ public class PlayerController : MonoBehaviour
 		}
 		
 		// Moving globally
-		moveDirection *= movementSpeed;
+		moveDirection *= MovementSpeed;
 		_controller.Move(moveDirection * Time.deltaTime);
 	}
 
@@ -67,9 +65,9 @@ public class PlayerController : MonoBehaviour
 	void Fire()
 	{
 		if (Input.GetKeyDown(KeyCode.Space))
-			gun.isFiring = true;
+			Gun.isFiring = true;
 		if (Input.GetKeyUp(KeyCode.Space))
-			gun.isFiring = false;
+			Gun.isFiring = false;
 	}
 
 }

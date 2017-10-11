@@ -245,10 +245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f347b53773f0c4321981e382d5e6beca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  lifeTime: 2
-  bulletDamage: 1
-  isDestoryable: 1
+  Speed: 5
+  LifeTime: 2
+  BulletDamage: 1
+  IsDestoryable: 1
 --- !u!135 &135308846407745526
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Interface;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IDamageable
 {
 	public int health;
 	[HideInInspector]
@@ -23,9 +24,9 @@ public class EnemyHealth : MonoBehaviour
 		}
 	}
 
-	public void damageEnemy(int damage)
+	public void RecieveDamage(int damage)
 	{
 		currentHealth -= damage;
-		Debug.Log("Enemy damaged, current health = ." + currentHealth);
+		Debug.Log("Enemy damaged, current health = " + currentHealth);
 	}
 }

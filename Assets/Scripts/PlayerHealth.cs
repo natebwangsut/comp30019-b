@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Interface;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour {
-
+public class PlayerHealth : MonoBehaviour, IDamageable 
+{
 	public int health;
 	[HideInInspector]
 	private int currentHealth;
@@ -22,7 +23,7 @@ public class PlayerHealth : MonoBehaviour {
 		}
 	}
 
-	public void damagePlayer(int damage)
+	public void RecieveDamage(int damage)
 	{
 		currentHealth -= damage;
 		Debug.Log("Player damaged, current health = " + currentHealth);
